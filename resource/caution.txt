@@ -1,0 +1,6 @@
+Pay Attention:
+1. Must select one between SCI and EI
+2. The excel file must be saved as XLS format.
+3. The first two columns of the file must be blank, which are used to record the result of recognition.
+4. The Sheet of the excel file must be named "Sheet1".
+5. In the SCI file, the column heading of all author addresses is "C1" and the column heading of correspondence author addresses is "RP"
