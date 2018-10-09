@@ -25,7 +25,7 @@ public class FileSelector extends JFrame{
     
     // define panels and the modules
     
-    private JLabel jl = new JLabel("这个窗口用来选择待处理的论文");
+    //private JLabel jl = new JLabel("这个窗口用来选择待处理的论文");
     private JPanel panel1 = new JPanel(new GridLayout(1,1));    // use to put j2    
     private JLabel j2 = new JLabel("注意：待处理论文清单的最前两列是用来标注单位排名和通讯单位的");
     
@@ -43,7 +43,8 @@ public class FileSelector extends JFrame{
     private JButton jb2 = new JButton("请选择地址清单文件：");
     private JTextField jt2 = new JTextField("",20);
     
-    private JPanel panel5 = new JPanel(new GridLayout(1,1));    // use to put jb3
+    //private JPanel panel5 = new JPanel(new GridLayout(1,1));    // use to put jb3
+    private JPanel panel5 = new JPanel(); 
     private JButton jb3 = new JButton("开始");
 	
     public FileSelector(){
@@ -65,6 +66,7 @@ public class FileSelector extends JFrame{
 	panel3.add(jt1);
 	panel4.add(jb2);
 	panel4.add(jt2);
+        jb3.setPreferredSize(new Dimension(100,40));
         panel5.add(jb3);
 		
 	//this.add(panel);
