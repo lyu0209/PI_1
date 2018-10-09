@@ -31,7 +31,7 @@ public class FileSelector extends JFrame{
     
     private JPanel panel2 = new JPanel(new GridLayout(1,3));    // use to put j2
     private JLabel j3 = new JLabel("请选择待处理论文类型");
-    private JRadioButton radio1 = new JRadioButton("SCI");// 定义一个单选按钮
+    private JRadioButton radio1 = new JRadioButton("SCI");// 定义一个单选按钮       
     private JRadioButton radio2 = new JRadioButton("EI");// 定义一个单选按钮 
     private ButtonGroup group = new ButtonGroup();
     
@@ -46,7 +46,11 @@ public class FileSelector extends JFrame{
     //private JPanel panel5 = new JPanel(new GridLayout(1,1));    // use to put jb3
     private JPanel panel5 = new JPanel(); 
     private JButton jb3 = new JButton("开始");
+    
+    private RadioButtonListener radioButtonListener=new RadioButtonListener();
 	
+    private String paperStyle=null;
+    
     public FileSelector(){
         //将整个容器设置为5行1列的网格布局,网格布局管理器x,y代表行和列
         container1.setLayout(new GridLayout(5,1));
@@ -60,6 +64,7 @@ public class FileSelector extends JFrame{
         panel2.add(radio1);
         panel2.add(radio2);
         //ButtonGroup group = new ButtonGroup();
+        radio1.addActionListener(radioButtonListener);
         group.add(radio1);
         group.add(radio2);
 	panel3.add(jb1);
@@ -79,6 +84,9 @@ public class FileSelector extends JFrame{
 	jb1.addActionListener(new ChooseFile(jt1));
         jb2.addActionListener(new ChooseFile(jt2));
         jb3.addActionListener(new AddressSelect());
+        
+        radio1.addActionListener(radioButtonListener);
+        radio2.addActionListener(radioButtonListener);
         
         setTitle("文件选择窗口");
         this.setSize(500, 300);
@@ -108,11 +116,26 @@ public class FileSelector extends JFrame{
     public class AddressSelect implements ActionListener{
         @Override
   	public void actionPerformed(ActionEvent e){
-            String sciFile = jt1.getText();
+            String paperFile = jt1.getText();
             String addressFile = jt2.getText();
             ExcelProcessor ep = new ExcelProcessor();
-            ep.sciProcessing(sciFile,addressFile);
+            //ep.sciProcessing(paperFile,addressFile);
+            ep.sciProcessing(paperFile,addressFile,paperStyle);
             dispose();      // 关闭当前窗口
 	}    
+    }
+    
+    public class RadioButtonListener implements ActionListener
+    {
+        @Override
+        public void actionPerformed(ActionEvent arg0) {
+            JRadioButton temp=(JRadioButton)arg0.getSource();
+            if(temp.isSelected()){
+                paperStyle=temp.getText();
+                //System.out.println(temp.getText());
+            }
+             
+        }
+         
     }
 }
