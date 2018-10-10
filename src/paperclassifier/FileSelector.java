@@ -118,9 +118,11 @@ public class FileSelector extends JFrame{
   	public void actionPerformed(ActionEvent e){
             String paperFile = jt1.getText();
             String addressFile = jt2.getText();
-            ExcelProcessor ep = new ExcelProcessor();
+            //ExcelProcessor ep = new ExcelProcessor();
+            FileProcessing fp = new FileProcessing(paperFile,addressFile,paperStyle);
+            fp.paperProcessing();
             //ep.sciProcessing(paperFile,addressFile);
-            ep.sciProcessing(paperFile,addressFile,paperStyle);
+            //ep.sciProcessing(paperFile,addressFile,paperStyle);
             dispose();      // 关闭当前窗口
 	}    
     }
